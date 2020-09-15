@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import {  Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../Logo.png';
+import Destination from '../Destination/Destination';
 
 const Menu = () => {
     return (
@@ -25,7 +26,7 @@ const Menu = () => {
         }
         `}
       </style>
-        <div className='container menu-bar pt-3'>
+        <div className='container menu-bar p-3'>
             <div className="row d-flex justify-content-between align-items-center">
                 <div className="logo"><Link to="/home"><img className='img-fluid logo' src={logo} alt="" /></Link></div>
                 <div className="">

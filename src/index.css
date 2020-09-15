@@ -44,3 +44,8 @@ input::placeholder{
 .logo{
   width: 150px;
 }
+.place-name{
+  position: relative;
+  top: -50px;
+  left: 10px;
+}
