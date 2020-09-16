@@ -14,6 +14,7 @@ import DestinationData from '../src/DestinationData/DestinationData'
 import Book from './Components/Book/Book';
 import Menu from './Components/Home/Menu';
 import { CssBaseline } from '@material-ui/core';
+import SignUp from './Components/Forms/SignUp';
 
 
 export const UserContext = createContext();
@@ -46,6 +47,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
+        <SignUp />
         <CssBaseline />
       </UserContext.Provider>
     </div>

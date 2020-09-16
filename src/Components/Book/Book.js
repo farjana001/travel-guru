@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Paper, makeStyles, Grid, TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
-import Input from '../Contorls/Input';
 import DatePicker from '../Contorls/DatePicker';
 
 const useStyles = makeStyles(theme => ({
@@ -43,14 +42,16 @@ const Book = () => {
                     <Grid item xs={6}>
                         <Paper className={classes.pageContent}>
                             <p className='text-muted'>Origin:</p>
-                            <Input
+                            <TextField
+                                variant='outlined'
                                 name='origin'
                                 label='Origin'
                                 value={values.origin}
                                 onChange={handleInputChange}
                             />
                             <p className='text-muted mt-3'>Destination:</p>
-                            <Input
+                            <TextField
+                                variant='outlined'
                                 label='Destination'
                                 name='destination'
                                 value={values.destination}

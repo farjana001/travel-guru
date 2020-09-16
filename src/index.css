@@ -48,8 +48,29 @@ input::placeholder{
   border: none;
   outline: none;
   padding: 12px 142px;
-  border-radius: 5px;
+  border-radius: 2px;
   margin-left: 7px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.create-account{
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  padding: 10px;
+  color: #000;
+  width: 40%;
+  border: 1px solid black;
+}
+/* hr.line {
+  background-color: purple;
+  width: 20%;
+  border-top: 1px solid black;
+ margin-bottom: 50px;
+} */
+.line {
+  margin: 25px 0;
+  border-top: 1px solid rgb(116, 114, 114);
+  width: 15%;
 }

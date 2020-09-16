@@ -23,8 +23,10 @@ const UseForm = (initialFieldValue) => {
 const useStyles = makeStyles(theme => ({
     root: {
         '& .MuiFormControl-root ': {
-            width: '90%',
-            margin: theme.spacing(1)
+            width: '80%',
+            margin: theme.spacing(1),
+            // marginLeft: theme.spacing(5)
+            
         }
     }
 }));
