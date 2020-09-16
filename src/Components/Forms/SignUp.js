@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
+import SocialLogin from './SocialLogin';
 
 const initialFieldValue = {
     id: '',
@@ -68,6 +69,7 @@ const SignUp = () => {
                 <span className='mt-3 mx-2'>Or</span>
                 <div className='line'></div>  
             </div>
+            <SocialLogin />
         </div>
     );
 };
