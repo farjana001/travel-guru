@@ -3,7 +3,7 @@ import React from 'react';
 
 const Destination = (props) => {
     // console.log(props);
-    const { name, details, img } = props.destination;
+    const { name, img } = props.destination;
 
     return (
         <div onClick={() => props.handleDestination(props.destination)} className='col-md-4'>

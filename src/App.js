@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -9,26 +9,46 @@ import {
 } from "react-router-dom";
 import Home from './Components/Home/Home';
 import NoMatch from './Components/NoMatch/NoMatch';
-import Destination from './Components/Destination/Destination';
+import DestinationDetails from './Components/Destination/DestinationDetails';
+import DestinationData from '../src/DestinationData/DestinationData'
+import Book from './Components/Book/Book';
+import Menu from './Components/Home/Menu';
+import SignUp from './Components/Forms/SignUp';
+
+
+export const UserContext = createContext();
 
 function App() {
+  const [destination, setDestination] = useState(DestinationData);
   return (
-    <Router>
-      <Switch>
-        <Route path='/home'>
-          <Home />
-        </Route>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route>
-          <Destination />
-        </Route>
-        <Route path='*'>
-          <NoMatch />
-        </Route>
-      </Switch>
-    </Router>
+    <div className='appBody'>
+      <UserContext.Provider value={[destination, setDestination]}>
+        <Router>
+          <Menu />
+          <Switch>
+            <Route path='/home'>
+              <Home />
+            </Route>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route path='/destination/:placeId'>
+              <DestinationDetails />
+            </Route>
+            <Route path='/book/:bookingId'>
+              <Book />
+            </Route>
+            {/* <PrivateRoute path='/book/:place'>
+            <Book />
+          </PrivateRoute> */}
+            <Route path='*'>
+              <NoMatch />
+            </Route>
+          </Switch>
+        </Router>
+        <SignUp />
+      </UserContext.Provider>
+    </div>
   );
 }
 

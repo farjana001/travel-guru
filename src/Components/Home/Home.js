@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-import Menu from './Menu';
-import DestinationData from '../../DestinationData/DestinationData';
+import React, { useState, useContext } from 'react';
 import Destination from '../Destination/Destination';
 import DestinationDetails from '../Destination/DestinationDetails';
+import { UserContext } from '../../App';
 
 
 const Home = () => {
-    const [destination, setDestination] = useState(DestinationData);
+    const [destination, setDestination] = useContext(UserContext);
 
-    const [details, setDetails] = useState(DestinationData);
+    const [details, setDetails] = useState([]);
 
-    const handleDestination = (destinationDetails) => {
-        const newDestination = [...details, destinationDetails];
-        
-        setDetails(newDestination);
-        console.log('object');
-    }
+    const handleDestination = (dtls) => {
+        const newDetails =  [...details, dtls];
+        setDetails(newDetails);
+    };
     return (
-        <div className='container-fluid header-body'>
-            <Menu />
+        <div className='container-fluid'>
+            
             <div className='country-body container'>
                 <div className="row country align-items-center">
                     <div className="col-md-4 mr-3">

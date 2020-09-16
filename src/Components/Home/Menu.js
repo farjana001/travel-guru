@@ -2,7 +2,7 @@ import React from 'react';
 import {  Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../Logo.png';
-import Destination from '../Destination/Destination';
+// import Destination from '../Destination/Destination';
 
 const Menu = () => {
     return (
@@ -35,7 +35,7 @@ const Menu = () => {
                 <div><Link className="menu-item" to="/home">Home</Link>
                     <Link className="menu-item" to="/news">News</Link>
                     <Link className="menu-item" to="/destination">destination</Link>
-                    <Link className="menu-item" to="/blog">Blog</Link>
+                    <Link className="menu-item" to="/book">Book</Link>
                     <Link className="menu-item" to="/contact">Contact</Link>
                     <Button variant="primary" size="xxl">Login</Button>
                 </div>
