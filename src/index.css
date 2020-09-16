@@ -43,3 +43,13 @@ input::placeholder{
   top: -50px;
   left: 10px;
 }
+.start-booking{
+  background-color: #f9a51a;
+  border: none;
+  outline: none;
+  padding: 12px 142px;
+  border-radius: 5px;
+  margin-left: 7px;
+  font-weight: bold;
+  font-size: 18px;
+}
