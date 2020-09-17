@@ -9,7 +9,7 @@ const UseForm = (initialFieldValue) => {
     email: '',
     password: ''
  });
-console.log(user);
+// console.log(user);
     
     const handleInputChange = e => {
         let isFieldValid = true; 

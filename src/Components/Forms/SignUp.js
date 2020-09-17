@@ -2,6 +2,9 @@ import React from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import SocialLogin from './SocialLogin';
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from './Firebase.config';
 
 const initialFieldValue = {
     id: '',
@@ -19,6 +22,10 @@ const initialFieldValue = {
     
 //  })
 const SignUp = () => {
+    if(firebase.apps.length === 0){
+        firebase.initializeApp(firebaseConfig);
+    }
+ 
     const {
         values,
         setValues,
@@ -31,7 +38,12 @@ const SignUp = () => {
         e.preventDefault()
         console.log(user.email, user.password);
         if(user.email && user.password){
-            console.log('clicked');
+            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+            .catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+              });
         }
     }
     return (
