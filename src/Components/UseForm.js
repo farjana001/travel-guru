@@ -3,16 +3,39 @@ import { makeStyles } from '@material-ui/core';
 
 const UseForm = (initialFieldValue) => {
     const [values, setValues] = useState(initialFieldValue);
-
+    const [user, setUser] = useState({
+    isSignedIn: false,
+    name: '',
+    email: '',
+    password: ''
+ });
+console.log(user);
     
     const handleInputChange = e => {
+        let isFieldValid = true; 
         const {name, value} = e.target;
+        if(e.target.name === 'email'){
+            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+        }
+        if(e.target.name === 'password'){
+            const isPasswordValid = e.target.value.length > 6;
+            const passwordContainedNum = /\d{1}/.test(e.target.value);
+            isFieldValid = isPasswordValid && passwordContainedNum;
+
+        }
+        if(isFieldValid){
+           const newUserInfo = {...user};
+           newUserInfo[e.target.name] = e.target.value;
+           setUser(newUserInfo);
+        }
         setValues({
             ...values,
             [name]:value
         })
     }
     return {
+        user,
+        setUser,
         values,
         setValues,
         handleInputChange
@@ -25,7 +48,6 @@ const useStyles = makeStyles(theme => ({
         '& .MuiFormControl-root ': {
             width: '80%',
             margin: theme.spacing(1),
-            // marginLeft: theme.spacing(5)
             
         }
     }

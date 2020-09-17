@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './Firebase.config';
@@ -16,7 +16,7 @@ const SocialLogin = () => {
     if(firebase.apps.length === 0){
         firebase.initializeApp(firebaseConfig);
     }
-
+ 
     // google sign in
     const handleGoogleSignIn = () => {
        
