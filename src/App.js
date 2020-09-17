@@ -15,15 +15,19 @@ import Book from './Components/Book/Book';
 import Menu from './Components/Home/Menu';
 import { CssBaseline } from '@material-ui/core';
 import SignUp from './Components/Forms/SignUp';
+import PrivateRoute from './Components/Forms/PrivateRoute';
+import SocialLogin from './Components/Forms/SocialLogin';
 
 
 export const UserContext = createContext();
 
 function App() {
   const [destination, setDestination] = useState(DestinationData);
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
     <div className='appBody'>
-      <UserContext.Provider value={[destination, setDestination]}>
+      <UserContext.Provider value={{value1:[destination, setDestination], value2:[loggedInUser, setLoggedInUser]}}>
+        <h4>Name: {loggedInUser.name}</h4>
         <Router>
           <Menu />
           <Switch>
@@ -36,18 +40,17 @@ function App() {
             <Route path='/destination/:placeId'>
               <DestinationDetails />
             </Route>
-            <Route path='/book/:bookingId'>
-              <Book />
+            <Route path='/book/:id'>
+                <SignUp />
             </Route>
-            {/* <PrivateRoute path='/book/:place'>
-            <Book />
-          </PrivateRoute> */}
+            <PrivateRoute path='/book/:id'>
+              <Book />
+            </PrivateRoute>
             <Route path='*'>
               <NoMatch />
             </Route>
           </Switch>
         </Router>
-        <SignUp />
         <CssBaseline />
       </UserContext.Provider>
     </div>

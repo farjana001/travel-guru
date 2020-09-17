@@ -23,7 +23,7 @@ const initialFieldValue = {
 
 
 const Book = () => {
-    const { bookingId } = useParams();
+    const { id } = useParams();
     const classes = useStyles();
 
     const {
@@ -34,6 +34,7 @@ const Book = () => {
 
     return (
         <div className='container'>
+            <h4>Book your{id}</h4>
             <Form>
                 <Grid container>
                     <Grid item xs={6}>

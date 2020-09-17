@@ -13,8 +13,8 @@ const DestinationDetails = (props) => {
     
     // let { from } = location.state || { from: { pathname: "/" } };
 
-    const handleBooking = (bookingId) => {
-        history.push(`/book/${bookingId}`)
+    const handleBooking = (id) => {
+        history.push(`/book/${id}`)
         console.log('clicked');
     }
 

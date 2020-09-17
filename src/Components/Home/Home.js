@@ -5,7 +5,8 @@ import { UserContext } from '../../App';
 
 
 const Home = () => {
-    const [destination, setDestination] = useContext(UserContext);
+    const {value1} = useContext(UserContext);
+    const [destination, setDestination] = value1;
 
     const [details, setDetails] = useState([]);
 
