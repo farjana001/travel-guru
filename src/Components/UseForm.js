@@ -7,7 +7,9 @@ const UseForm = (initialFieldValue) => {
     isSignedIn: false,
     name: '',
     email: '',
-    password: ''
+    password: '',
+    error: '',
+    success: false
  });
 // console.log(user);
     

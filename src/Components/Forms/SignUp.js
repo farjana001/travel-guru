@@ -39,7 +39,17 @@ const SignUp = () => {
         console.log(user.email, user.password);
         if(user.email && user.password){
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-            .catch(function(error) {
+            .then(res => {
+                const newUserInfo = {...user}
+                newUserInfo.error = ''
+                newUserInfo.success = true
+                setUser(newUserInfo);
+            })
+            .catch(error => {
+                const newUserInfo = {...user}
+                newUserInfo.error = error.message;
+                newUserInfo.success = false
+                setUser(newUserInfo);
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage);
@@ -95,8 +105,9 @@ const SignUp = () => {
                     />
                       <button className='start-booking' type='submit'>Start Booking</button>
                 </Form>
-              
                 <p>Already have an account ? <span>Login</span></p>
+    <p className='text-danger'>{user.error}</p>
+    { user.success &&  <p className='text-success'>User created successfully</p> }
             </div>
             <div className="d-flex justify-content-center my-4">
                 <div className='line'></div>
