@@ -5,18 +5,8 @@ import { Button } from 'react-bootstrap';
 
 
 const DestinationDetails = (props) => {
-    // const { bookingId } = useParams();
     const details = props.details;
     const {name, id} = details;
-    let history = useHistory();
-    // let location = useLocation();
-    
-    // let { from } = location.state || { from: { pathname: "/" } };
-
-    const handleBooking = (id) => {
-        history.push(`/book/${id}`)
-        console.log('clicked');
-    }
 
     return (
         <div>
@@ -49,7 +39,7 @@ const DestinationDetails = (props) => {
                                     <li className='list-group-item'>
                                         {dtl.name}
                                     </li>
-                                    <Button onClick={() => handleBooking(id)} variant='primary' size='xxl'>Booking</Button>
+                                    <Button variant='primary' size='xxl'>Booking</Button>
                                 </ul>
                                 
                             )

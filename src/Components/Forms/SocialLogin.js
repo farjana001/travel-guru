@@ -36,28 +36,14 @@ const SocialLogin = () => {
     }
 
     // facebook sign in
-    const handleFbSignIn = () => {
-        var fbProvider = new firebase.auth.FacebookAuthProvider();
-        firebase.auth().signInWithPopup(fbProvider).then(function(result) {
-            var token = result.credential.accessToken;
-            const {displayName, email} = result.user;
-            const signedInUser = {name:displayName, email};
-            setLoggedInUser(signedInUser);
-            history.replace(from)
-          }).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            var email = error.email;
-            var credential = error.credential;
-          });
-    }
+   
     return (
         <div className=''>
-            <div className='social-login mb-3 mx-auto'>
-                <button onClick={handleFbSignIn}>Continue With Facebook</button>
-            </div>
-            <div className='social-login mx-auto mb-5'>
+             <div className='social-login mx-auto mb-3'>
                 <button onClick={handleGoogleSignIn}>Continue With Google</button>
+            </div>
+            <div className='social-login mb-5 mx-auto'>
+                <button>Continue With Facebook</button>
             </div>
         </div>
     );

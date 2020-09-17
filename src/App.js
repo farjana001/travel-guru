@@ -9,15 +9,14 @@ import {
 } from "react-router-dom";
 import Home from './Components/Home/Home';
 import NoMatch from './Components/NoMatch/NoMatch';
-// import DestinationDetails from './Components/Destination/DestinationDetails';
 import DestinationData from '../src/DestinationData/DestinationData'
 import Book from './Components/Book/Book';
 import Menu from './Components/Home/Menu';
 import { CssBaseline } from '@material-ui/core';
 import SignUp from './Components/Forms/SignUp';
-import PrivateRoute from './Components/Forms/PrivateRoute';
-import SocialLogin from './Components/Forms/SocialLogin';
 import Login from './Components/Forms/Login';
+import DestinationMap from './Components/DestinationMap/DestinationMap';
+import PrivateRoute from './Components/Forms/PrivateRoute';
 
 
 export const UserContext = createContext();
@@ -27,8 +26,8 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   return (
     <div className='appBody'>
+      <h1> name:{loggedInUser.name}</h1>
       <UserContext.Provider value={{value1:[destination, setDestination], value2:[loggedInUser, setLoggedInUser]}}>
-        <h4>Name: {loggedInUser.name}</h4>
         <Router>
           <Menu />
           <Switch>
@@ -47,6 +46,9 @@ function App() {
             <Route path='/login'>
               <Login />
             </Route>
+            <PrivateRoute path='/destination'>
+              <DestinationMap />
+            </PrivateRoute>
             <Route path='*'>
               <NoMatch />
             </Route>

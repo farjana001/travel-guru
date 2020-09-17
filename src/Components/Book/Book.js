@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Paper, makeStyles, Grid, TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import DatePicker from '../Contorls/DatePicker';
@@ -23,9 +23,12 @@ const initialFieldValue = {
 
 
 const Book = () => {
-    const { id } = useParams();
+    const {place} = useParams();
     const classes = useStyles();
-
+    let history = useHistory();
+    const handleBooking = (place) => {
+        history.push(`/destination/${place}`)
+    }
     const {
         values,
         setValues,
@@ -34,7 +37,6 @@ const Book = () => {
 
     return (
         <div className='container'>
-            <h4>Book your{id}</h4>
             <Form>
                 <Grid container>
                     <Grid item xs={6}>
@@ -70,7 +72,7 @@ const Book = () => {
                                 value={values.from}
                                 onChange={handleInputChange}
                             />
-                            <button className='start-booking'>Start Booking</button>
+                            <button onClick={() => handleBooking(place)} className='start-booking'>Start Booking</button>
                         </Paper>
                     </Grid>
                 </Grid>
