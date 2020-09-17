@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import SocialLogin from './SocialLogin';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './Firebase.config';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const initialFieldValue = {
     id: '',
@@ -15,6 +16,13 @@ const initialFieldValue = {
 };
 
 const Login = () => {
+    const {value2} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = value2;
+
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
     }
@@ -30,13 +38,16 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(user.email, user.password);
-        if (user.email && user.password) {
+        if (loggedInUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
                     const newUserInfo = { ...user }
+                    const signedInUser= {name: res.user.displayName, email:user.email};
+                    setLoggedInUser(signedInUser)
                     newUserInfo.error = ''
                     newUserInfo.success = true
                     setUser(newUserInfo);
+                    history.replace(from);
                 })
                 .catch(error => {
                     const newUserInfo = { ...user }
@@ -49,10 +60,10 @@ const Login = () => {
                 });
         }
     }
-    let history = useHistory();
-    const handleStartBooking = () => {
-        history.push(`/destination`);
-    }
+   
+    // const handleStartBooking = () => {
+    //     history.push(`/destination`);
+    // }
     return (
         <div>
             <div className='create-account mx-auto text-center p-3'>
@@ -69,10 +80,10 @@ const Login = () => {
                         label='Password'
                         value={values.lastName}
                         onChange={handleInputChange}
-                       type='password'
+                        type='password'
                     />
-                 
-                    <button onClick={handleStartBooking} className='start-booking' type='submit'>Start Booking</button>
+
+                    <button className='start-booking' type='submit'>Start Booking</button>
                 </Form>
                 <p>Already have an account ? <Link to='/login'>Login</Link></p>
                 <p className='text-danger'>{user.error}</p>

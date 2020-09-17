@@ -8,26 +8,28 @@ const Home = () => {
     const {value1} = useContext(UserContext);
     const [destination, setDestination] = value1;
 
-    const [details, setDetails] = useState([]);
+    // const [details, setDetails] = useState([]);
 
-    const handleDestination = (dtls) => {
-        const newDetails =  [...details, dtls];
-        setDetails(newDetails);
-    };
+    // const handleDestination = (dtls) => {
+    //     const newDetails =  [...details, dtls];
+    //     setDetails(newDetails);
+    // };
     return (
         <div className='container-fluid'>
             
             <div className='country-body container'>
                 <div className="row country align-items-center">
                     <div className="col-md-4 mr-3">
-                        <DestinationDetails details={details}></DestinationDetails>
-                        
+                        {/* <DestinationDetails details={details}></DestinationDetails> */}
+                        <h1 className='header-text'>Travel Guru</h1>
+                        <p className='text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos adipisci numquam cupiditate non natus, dicta officia fugiat consequatur velit tempore dolor, tempora delectus alias doloribus expedita soluta deleniti sit animi qui reprehenderit ea incidunt, facilis vel? Architecto nam quasi fugiat, ipsam unde accusantium sint blanditiis exercitationem qui. Amet, molestiae exercitationem.</p>
                     </div>
                     <div className="col-md-8 row mt-5">
                         {
-                            destination.map(dst => <Destination key={destination.id} destination={dst} handleDestination={handleDestination}></Destination>)
+                            destination.map(dst => <Destination key={destination.id} destination={dst}></Destination>)
                         }
                     </div>
+
 
                 </div>
             </div>

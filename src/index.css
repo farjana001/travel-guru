@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Bebas Neue', cursive, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,7 +12,10 @@ code {
     monospace;
 }
 
-
+.header-text {
+  font-family: 'Bebas Neue', cursive;
+  color: #f9a51a;
+}
 .menu-item{
   color: white;
   padding: 20px;
@@ -43,6 +46,13 @@ input::placeholder{
   top: -50px;
   left: 10px;
 }
+.single-card{
+  cursor: pointer;
+}
+.single-card:hover{
+  border: 2px solid #f9a51a;
+  border-radius: 16px;
+}
 .start-booking{
   background-color: #f9a51a;
   border: none;
@@ -63,12 +73,6 @@ input::placeholder{
   width: 40%;
   border: 1px solid black;
 }
-/* hr.line {
-  background-color: purple;
-  width: 20%;
-  border-top: 1px solid black;
- margin-bottom: 50px;
-} */
 .line {
   margin: 25px 0;
   border-top: 1px solid rgb(116, 114, 114);

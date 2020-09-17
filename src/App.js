@@ -23,11 +23,11 @@ export const UserContext = createContext();
 
 function App() {
   const [destination, setDestination] = useState(DestinationData);
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState([]);
   return (
     <div className='appBody'>
-      <h1> name:{loggedInUser.name}</h1>
-      <UserContext.Provider value={{value1:[destination, setDestination], value2:[loggedInUser, setLoggedInUser]}}>
+      {/* <h4 className='text-white'> name:{loggedInUser.name}</h4> */}
+      <UserContext.Provider value={{ value1: [destination, setDestination], value2: [loggedInUser, setLoggedInUser] }}>
         <Router>
           <Menu />
           <Switch>
@@ -38,7 +38,7 @@ function App() {
               <Home />
             </Route>
             <Route path='/signUp'>
-                <SignUp />
+              <SignUp />
             </Route>
             <Route path='/book'>
               <Book />
@@ -46,7 +46,7 @@ function App() {
             <Route path='/login'>
               <Login />
             </Route>
-            <PrivateRoute path='/destination'>
+            <PrivateRoute path='/destination/:idName'>
               <DestinationMap />
             </PrivateRoute>
             <Route path='*'>

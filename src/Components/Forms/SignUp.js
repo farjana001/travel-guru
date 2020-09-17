@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import SocialLogin from './SocialLogin';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './Firebase.config';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const initialFieldValue = {
     id: '',
@@ -15,14 +16,15 @@ const initialFieldValue = {
     mobile: '',
     password: ''
 };
-
-// const [user, setUser] = useState({
-//     isSignedIn: false,
-//     name: '',
-//     email: '',
-
-//  })
 const SignUp = () => {
+    const {value2} = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser] = value2;
+
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
+
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
     }
@@ -37,14 +39,16 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(user.email, user.password);
-        if (user.email && user.password) {
+        if (loggedInUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
                     const newUserInfo = { ...user }
+                    const signedInUser= {name: res.user.displayName, email:user.email};
+                    setLoggedInUser(signedInUser)
                     newUserInfo.error = ''
                     newUserInfo.success = true
                     setUser(newUserInfo);
+                    history.replace(from);
                 })
                 .catch(error => {
                     const newUserInfo = { ...user }
