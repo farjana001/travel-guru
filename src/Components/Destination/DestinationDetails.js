@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 
 
 const DestinationDetails = (props) => {
-    const { placeId } = useParams();
+    // const { bookingId } = useParams();
     const details = props.details;
     const {name, id} = details;
     let history = useHistory();

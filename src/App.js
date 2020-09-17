@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Home from './Components/Home/Home';
 import NoMatch from './Components/NoMatch/NoMatch';
-import DestinationDetails from './Components/Destination/DestinationDetails';
+// import DestinationDetails from './Components/Destination/DestinationDetails';
 import DestinationData from '../src/DestinationData/DestinationData'
 import Book from './Components/Book/Book';
 import Menu from './Components/Home/Menu';
@@ -17,6 +17,7 @@ import { CssBaseline } from '@material-ui/core';
 import SignUp from './Components/Forms/SignUp';
 import PrivateRoute from './Components/Forms/PrivateRoute';
 import SocialLogin from './Components/Forms/SocialLogin';
+import Login from './Components/Forms/Login';
 
 
 export const UserContext = createContext();
@@ -37,15 +38,15 @@ function App() {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route path='/destination/:placeId'>
-              <DestinationDetails />
-            </Route>
-            <Route path='/book/:id'>
+            <Route path='/signUp'>
                 <SignUp />
             </Route>
-            <PrivateRoute path='/book/:id'>
+            <Route path='/book'>
               <Book />
-            </PrivateRoute>
+            </Route>
+            <Route path='/login'>
+              <Login />
+            </Route>
             <Route path='*'>
               <NoMatch />
             </Route>
