@@ -3,16 +3,15 @@ import { useHistory, Link } from 'react-router-dom';
 
 
 const Destination = (props) => {
-    // console.log(props);
-    const { name, img, id } = props.destination;
+    const { name, img } = props.destination;
     let history = useHistory();
-   
+
     const handleBooking = () => {
         history.push(`/book`)
     }
 
     return (
-        <Link to={'/destination/'+ name} onClick={() => handleBooking()} className=' col-md-4'>
+        <Link to={'/destination/' + name} onClick={() => handleBooking()} className=' col-md-4'>
             <div className="place-img">
                 <img className='img-fluid single-card' src={img} alt="" />
             </div>

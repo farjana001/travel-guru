@@ -1,4 +1,3 @@
-  
 import React, { useContext } from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
@@ -18,7 +17,7 @@ const initialFieldValue = {
     password: ''
 };
 const SignUp = () => {
-    const {value2} = useContext(UserContext);
+    const { value2 } = useContext(UserContext);
     const [loggedInUser, setLoggedInUser] = value2;
 
     const history = useHistory();
@@ -44,7 +43,7 @@ const SignUp = () => {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
                     const newUserInfo = { ...user }
-                    const signedInUser= {name: res.user.displayName, email:user.email};
+                    const signedInUser = { name: res.user.displayName, email: user.email };
                     setLoggedInUser(signedInUser)
                     newUserInfo.error = ''
                     newUserInfo.success = true
@@ -111,9 +110,14 @@ const SignUp = () => {
                     />
                     <button className='start-booking' type='submit'>Start Booking</button>
                 </Form>
-                <p>Already have an account ? <Link to='/login'>Login</Link></p>
+                <p>
+                    Already have an account ?
+                        <Link to='/login'>Login</Link>
+                </p>
                 <p className='text-danger'>{user.error}</p>
-                {user.success && <p className='text-success'>User created successfully</p>}
+                {
+                    user.success && <p className='text-success'>User created successfully</p>
+                }
             </div>
             <div className="d-flex justify-content-center my-4">
                 <div className='line'></div>

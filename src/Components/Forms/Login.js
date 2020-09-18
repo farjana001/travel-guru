@@ -1,13 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
-import SocialLogin from './SocialLogin';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './Firebase.config';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
-import SignUp from './SignUp';
 
 const initialFieldValue = {
     id: '',
