@@ -63,6 +63,28 @@ const SignUp = () => {
                 });
         }
     }
+
+    if(!newUser && loggedInUser && user.email && user.password){
+        firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+        .then(res => {
+            const newUserInfo = { ...user }
+            const signedInUser = { name: res.user.displayName, email: user.email };
+            setLoggedInUser(signedInUser)
+            newUserInfo.error = ''
+            newUserInfo.success = true
+            setUser(newUserInfo);
+            history.replace(from);
+        })
+        .catch(error => {
+            const newUserInfo = { ...user }
+            newUserInfo.error = error.message;
+            newUserInfo.success = false
+            setUser(newUserInfo);
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+        });
+    }
     return (
         <div className=''>
             <div className='create-account mx-auto text-center pb-5'>

@@ -25,6 +25,7 @@ function App() {
   const [destination, setDestination] = useState(DestinationData);
   // declaring state for sign in methods
   const [loggedInUser, setLoggedInUser] = useState([]);
+  
 
 
   return (
