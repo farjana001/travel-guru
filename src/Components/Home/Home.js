@@ -5,7 +5,8 @@ import { UserContext } from '../../App';
 
 const Home = () => {
     const {value1} = useContext(UserContext);
-    const [destination] = value1;
+    const [destination, setDestination] = value1;
+    
     return (
         <div className='container-fluid'>
             <div className='country-body container'>

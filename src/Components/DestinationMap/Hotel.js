@@ -6,6 +6,7 @@ const Hotel = (props) => {
 
     return (
         <div className='d-flex mb-3'>
+           
             <div className="img-sec mr-4">
                 <img className='hotel-img' src={hotelImg} alt="" />
             </div>

@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import DestinationData from '../../DestinationData/DestinationData';
-import { useParams } from 'react-router-dom';
 import Hotel from './Hotel';
 
 
 const DestinationMap = () => {
-    const { name } = useParams();
-    const [hotelsDetails] = useState(DestinationData);
-
+    
+    const [hotelDetails, setHotelDetails] = useState(DestinationData);
+  
+    
     return (
         <div className='container'>
-            <h2 className='text-white'>Stay in {name}</h2>
+            <h2 className='text-white header-text'>Stay in Comfort</h2>
                 <div className="row">
                     <div className="col-md-6">
 
                         {
-                            hotelsDetails.map(htl => <Hotel hotelDetails={htl}></Hotel>)
+                            hotelDetails.map(htl => <Hotel hotelDetails={htl}></Hotel>)
                         }
                     </div>
 

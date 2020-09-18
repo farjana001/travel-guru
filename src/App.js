@@ -13,7 +13,6 @@ import Book from './Components/Book/Book';
 import Menu from './Components/Home/Menu';
 import { CssBaseline } from '@material-ui/core';
 import SignUp from './Components/Forms/SignUp';
-import Login from './Components/Forms/Login';
 import DestinationMap from './Components/DestinationMap/DestinationMap';
 import PrivateRoute from './Components/Forms/PrivateRoute';
 
@@ -43,12 +42,9 @@ function App() {
                 <Route path='/signUp'>
                   <SignUp />
                 </Route>
-                  <Route path='/book'>
+                  <Route path='/book/:placeName'>
                     <Book />
                   </Route>
-                    {/* <Route path='/login'>
-                      <Login />
-                    </Route> */}
                       <PrivateRoute path='/destination'>
                         <DestinationMap />
                       </PrivateRoute>

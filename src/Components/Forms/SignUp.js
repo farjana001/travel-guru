@@ -15,6 +15,7 @@ const initialFieldValue = {
     email: '',
     mobile: '',
     password: '',
+    error:'',
     newUser: false
 };
 const SignUp = () => {
@@ -57,9 +58,6 @@ const SignUp = () => {
                     newUserInfo.error = error.message;
                     newUserInfo.success = false
                     setUser(newUserInfo);
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
                 });
         }
     }
@@ -80,9 +78,6 @@ const SignUp = () => {
             newUserInfo.error = error.message;
             newUserInfo.success = false
             setUser(newUserInfo);
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorCode, errorMessage);
         });
     }
     return (
@@ -133,15 +128,6 @@ const SignUp = () => {
                                         onChange={handleInputChange}
                                         required
                                     />
-                    {
-                        newUser &&   <TextField
-                                        name='confirmPassword'
-                                        label='Confirm Password'
-                                        type='password'
-                                        value={values.confirmPassword}
-                                        onChange={handleInputChange}
-                                    />
-                    }
 
                     <button className='start-booking' type='submit'>Start Booking</button> <br/>
 
@@ -152,8 +138,8 @@ const SignUp = () => {
                             :
                             <> <span>Don't have an account?</span> <Link type="button" style={{ color: '#f9a51a' }} onClick={() => setNewUser(!newUser)}> Create an account</Link> </>
                     }
-                   
                 </Form>
+                <p className='text-danger'>{user.error}</p>
                 <div className="d-flex justify-content-center my-2">
                 <div className='line'></div>
                 <span className='mt-3 mx-2'>Or</span>

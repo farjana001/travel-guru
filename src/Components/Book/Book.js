@@ -1,8 +1,10 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Paper, makeStyles, Grid, TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import DatePicker from '../Contorls/DatePicker';
+import DestinationData from '../../DestinationData/DestinationData';
+
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
@@ -23,12 +25,10 @@ const initialFieldValue = {
 
 
 const Book = () => {
-    const {place} = useParams();
+    const { placeName } = useParams();
     const classes = useStyles();
-    let history = useHistory();
-    const handleBooking = (place) => {
-        history.push(`/destination/${place}`)
-    }
+    const place = DestinationData.find(dt => dt.name === placeName);
+    console.log(place.name);
     const {
         values,
         setValues,
@@ -40,7 +40,9 @@ const Book = () => {
             <Form>
                 <Grid container>
                     <Grid item xs={6}>
-                        <h1 className='text-white'>Booking available</h1>
+                        <h1 className='header-text text-white pt-5 mt-3'>{place.name}</h1>
+                        <p className='text-white mb-4'>{place.details}</p>
+                        <Link class to={'/destination'} className='start-booking pt-2 mt-2'>Start Booking</Link>
                     </Grid>
                     <Grid item xs={6}>
                         <Paper className={classes.pageContent}>
@@ -72,7 +74,6 @@ const Book = () => {
                                 value={values.from}
                                 onChange={handleInputChange}
                             />
-                            <button onClick={() => handleBooking(place)} className='start-booking'>Start Booking</button>
                         </Paper>
                     </Grid>
                 </Grid>
