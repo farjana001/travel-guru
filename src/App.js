@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Home from './Components/Home/Home';
 import NoMatch from './Components/NoMatch/NoMatch';
@@ -22,8 +21,12 @@ import PrivateRoute from './Components/Forms/PrivateRoute';
 export const UserContext = createContext();
 
 function App() {
+  // declaring state for data
   const [destination, setDestination] = useState(DestinationData);
+  // declaring state for sign in methods
   const [loggedInUser, setLoggedInUser] = useState([]);
+
+
   return (
     <div className='appBody'>
       <UserContext.Provider value={{ value1: [destination, setDestination], value2: [loggedInUser, setLoggedInUser] }}>
@@ -33,27 +36,27 @@ function App() {
             <Route path='/home'>
               <Home />
             </Route>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route path='/signUp'>
-              <SignUp />
-            </Route>
-            <Route path='/book'>
-              <Book />
-            </Route>
-            <Route path='/login'>
-              <Login />
-            </Route>
-            <PrivateRoute path='/destination/:name'>
-              <DestinationMap />
-            </PrivateRoute>
-            <Route path='*'>
-              <NoMatch />
-            </Route>
-          </Switch>
-        </Router>
-        <CssBaseline />
+              <Route exact path='/'>
+                <Home />
+              </Route>
+                <Route path='/signUp'>
+                  <SignUp />
+                </Route>
+                  <Route path='/book'>
+                    <Book />
+                  </Route>
+                    <Route path='/login'>
+                      <Login />
+                    </Route>
+                      <PrivateRoute path='/destination/:name'>
+                        <DestinationMap />
+                      </PrivateRoute>
+                        <Route path='*'>
+                          <NoMatch />
+                        </Route>
+              </Switch>
+            </Router>
+          <CssBaseline />
       </UserContext.Provider>
     </div>
   );
