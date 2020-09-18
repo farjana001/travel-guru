@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import SocialLogin from './SocialLogin';
@@ -7,17 +7,20 @@ import "firebase/auth";
 import firebaseConfig from './Firebase.config';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
+import SignUp from './SignUp';
 
 const initialFieldValue = {
     id: '',
     name: '',
     email: '',
-    password: ''
+    password: '',
+    newUser: false
 };
 
 const Login = () => {
     const {value2} = useContext(UserContext);
     const [loggedInUser, setLoggedInUser] = value2;
+    
 
     const history = useHistory();
     const location = useLocation();
@@ -60,14 +63,10 @@ const Login = () => {
                 });
         }
     }
-   
-    // const handleStartBooking = () => {
-    //     history.push(`/destination`);
-    // }
     return (
         <div>
             <div className='create-account mx-auto text-center p-3'>
-                <h3 className="pt-5">Create an account</h3>
+                <h3 className="pt-5">Login</h3>
                 <Form onSubmit={handleSubmit}>
                     <TextField
                         name='email'
@@ -85,16 +84,10 @@ const Login = () => {
 
                     <button className='start-booking' type='submit'>Start Booking</button>
                 </Form>
-                <p>Already have an account ? <Link to='/login'>Login</Link></p>
+             
+                <p>Don't have an account? <Link to='/signUp'>sign up</Link></p>
                 <p className='text-danger'>{user.error}</p>
-                {user.success && <p className='text-success'>User created successfully</p>}
             </div>
-            <div className="d-flex justify-content-center my-4">
-                <div className='line'></div>
-                <span className='mt-3 mx-2'>Or</span>
-                <div className='line'></div>
-            </div>
-            <SocialLogin />
         </div>
     );
 };

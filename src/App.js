@@ -26,7 +26,6 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState([]);
   return (
     <div className='appBody'>
-      {/* <h4 className='text-white'> name:{loggedInUser.name}</h4> */}
       <UserContext.Provider value={{ value1: [destination, setDestination], value2: [loggedInUser, setLoggedInUser] }}>
         <Router>
           <Menu />
@@ -46,7 +45,7 @@ function App() {
             <Route path='/login'>
               <Login />
             </Route>
-            <PrivateRoute path='/destination/:idName'>
+            <PrivateRoute path='/destination/:name'>
               <DestinationMap />
             </PrivateRoute>
             <Route path='*'>

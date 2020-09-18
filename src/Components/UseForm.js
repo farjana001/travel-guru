@@ -9,6 +9,7 @@ const UseForm = (initialFieldValue) => {
     email: '',
     password: '',
     error: '',
+    newUser: false,
     success: false
  });
 // console.log(user);

@@ -1,25 +1,25 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 
 const Destination = (props) => {
     // console.log(props);
-    const { name, img } = props.destination;
+    const { name, img, id } = props.destination;
     let history = useHistory();
-    console.log(props.destination);
+   
     const handleBooking = () => {
         history.push(`/book`)
     }
 
     return (
-        <div onClick={() => handleBooking()} className=' col-md-4'>
+        <Link to={'/destination/'+ name} onClick={() => handleBooking()} className=' col-md-4'>
             <div className="place-img">
                 <img className='img-fluid single-card' src={img} alt="" />
             </div>
             <div className="place-name">
                 <h2 className='header-text text-white'>{name}</h2>
             </div>
-        </div>
+        </Link>
     );
 };
 

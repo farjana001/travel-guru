@@ -1,28 +1,25 @@
 import React, { useState, useContext } from 'react';
-import coxImg from '../../Image/cox-1.png';
-import { UserContext } from '../../App';
-import Hotels from './Hotels';
+import DestinationData from '../../DestinationData/DestinationData';
+import star from '../../Icon/star_1_.png';
+import { useParams } from 'react-router-dom';
+import Hotel from './Hotel';
+
 
 const DestinationMap = () => {
-    const {value1} = useContext(UserContext);
-    const [destination, setDestination] = value1;
+    const { name } = useParams();
+    const [hotelsDetails, setHotelDetails] = useState(DestinationData); 
 
     return (
         <div className='container'>
+            <h2 className='text-white'>Stay in {name}</h2>
             <div className="row">
                 <div className="col-md-6">
-                    <div className='d-flex'>
-                        <div><img className='img-fluid' src={coxImg} alt=""/></div>
-                        <div>
-                        <h3 className='text-white'>Live in Comfort</h3>
-                        <p className='text-white'>
-                          {
-                              destination.map(dst => <Hotels destination={dst}></Hotels>)
-                          }
-                        </p>
-                        </div>
-                    </div>
-                </div>
+                    
+                        {
+                            hotelsDetails.map(htl => <Hotel hotelDetails={htl}></Hotel>)
+                        }
+                     </div>
+                
                 <div className="col-md-6"><h1 className='text-white header-text'>Google Map</h1></div>
             </div>
         </div>
