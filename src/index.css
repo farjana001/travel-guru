@@ -76,7 +76,7 @@ input::placeholder{
 .line {
   margin: 25px 0;
   border-top: 1px solid rgb(116, 114, 114);
-  width: 12%;
+  width: 20%;
 }
 .social-login{
   display: flex;
@@ -93,7 +93,7 @@ input::placeholder{
   outline: none;
   border: 1px solid gray;
   border-radius: 20px;
-  width: 30%;
+  width: 70%;
   display: flex;
   justify-content: center;
   align-items: center;

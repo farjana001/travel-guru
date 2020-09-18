@@ -53,10 +53,10 @@ const SocialLogin = () => {
 
     return (
         <div>
-            <div className='social-login mx-auto mb-3'>
+            <div className='social-login mb-3'>
                 <button onClick={handleGoogleSignIn}>Continue With Google</button>
             </div>
-            <div className='social-login mb-5 mx-auto'>
+            <div className='social-login'>
                 <button onClick={handleFbSignIn}>Continue With Facebook</button>
             </div>
         </div>

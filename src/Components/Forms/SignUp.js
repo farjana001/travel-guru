@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { UseForm, Form } from '../UseForm';
 import SocialLogin from './SocialLogin';
@@ -14,11 +14,13 @@ const initialFieldValue = {
     lastName: '',
     email: '',
     mobile: '',
-    password: ''
+    password: '',
+    newUser: false
 };
 const SignUp = () => {
     const { value2 } = useContext(UserContext);
     const [loggedInUser, setLoggedInUser] = value2;
+    const [newUser, setNewUser] = useState(false);
 
     const history = useHistory();
     const location = useLocation();
@@ -39,7 +41,7 @@ const SignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (loggedInUser && user.email && user.password) {
+        if (newUser && loggedInUser && user.email && user.password) {
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then(res => {
                     const newUserInfo = { ...user }
@@ -62,69 +64,81 @@ const SignUp = () => {
         }
     }
     return (
-        <div>
-            <div className='create-account mx-auto text-center p-3'>
-                <h3 className="pt-5">Create an account</h3>
+        <div className=''>
+            <div className='create-account mx-auto text-center pb-5'>
+            <div className="pt-3">
+                    {newUser ? <h3>Create an account</h3> : <h3>Log In</h3>}
+                </div>
                 <Form onSubmit={handleSubmit}>
-                    <TextField
-                        name='firstName'
-                        label='First Name'
-                        value={values.firstName}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <TextField
-                        name='lastName'
-                        label='Last Name'
-                        value={values.lastName}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <TextField
-                        name='email'
-                        label='Email'
-                        value={values.email}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <TextField
-                        name='mobile'
-                        label='Mobile'
-                        value={values.mobile}
-                        onChange={handleInputChange}
-                    />
-                    <TextField
-                        name='password'
-                        label='Password'
-                        type='password'
-                        value={values.password}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <TextField
-                        name='confirmPassword'
-                        label='Confirm Password'
-                        type='password'
-                        value={values.confirmPassword}
-                        onChange={handleInputChange}
-                    />
-                    <button className='start-booking' type='submit'>Start Booking</button>
+                    {
+                        newUser && <TextField
+                                        name='firstName'
+                                        label='First Name'
+                                        value={values.firstName}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                    }
+                    {
+                        newUser &&  <TextField
+                                        name='lastName'
+                                        label='Last Name'
+                                        value={values.lastName}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                    }
+                                    <TextField
+                                        name='email'
+                                        label='Email'
+                                        value={values.email}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                    {
+                        newUser &&  <TextField
+                                        name='mobile'
+                                        label='Mobile'
+                                        value={values.mobile}
+                                        onChange={handleInputChange}
+                                    />
+                    }
+                                    <TextField
+                                        name='password'
+                                        label='Password'
+                                        type='password'
+                                        value={values.password}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                    {
+                        newUser &&   <TextField
+                                        name='confirmPassword'
+                                        label='Confirm Password'
+                                        type='password'
+                                        value={values.confirmPassword}
+                                        onChange={handleInputChange}
+                                    />
+                    }
+
+                    <button className='start-booking' type='submit'>Start Booking</button> <br/>
+
+                    {
+                        newUser ?
+                            <> <span>Already have an account? </span>
+                             <Link type="button" style={{ color: '#f9a51a' }} onClick={() => setNewUser(!newUser)}> Login</Link> </>
+                            :
+                            <> <span>Don't have an account?</span> <Link type="button" style={{ color: '#f9a51a' }} onClick={() => setNewUser(!newUser)}> Create an account</Link> </>
+                    }
+                   
                 </Form>
-                <p>
-                    Already have an account ?
-                        <Link to='/login'>Login</Link>
-                </p>
-                <p className='text-danger'>{user.error}</p>
-                {
-                    user.success && <p className='text-success'>User created successfully</p>
-                }
-            </div>
-            <div className="d-flex justify-content-center my-4">
+                <div className="d-flex justify-content-center my-2">
                 <div className='line'></div>
                 <span className='mt-3 mx-2'>Or</span>
                 <div className='line'></div>
             </div>
             <SocialLogin />
+            </div>
         </div>
     );
 };

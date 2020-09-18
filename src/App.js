@@ -45,10 +45,10 @@ function App() {
                   <Route path='/book'>
                     <Book />
                   </Route>
-                    <Route path='/login'>
+                    {/* <Route path='/login'>
                       <Login />
-                    </Route>
-                      <PrivateRoute path='/destination/:name'>
+                    </Route> */}
+                      <PrivateRoute path='/destination'>
                         <DestinationMap />
                       </PrivateRoute>
                         <Route path='*'>
