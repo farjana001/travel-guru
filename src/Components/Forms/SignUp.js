@@ -25,7 +25,7 @@ const SignUp = () => {
 
     const history = useHistory();
     const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } };
+    let { from } = location.state || { from: { pathname: "/destination" } };
 
 
     if (firebase.apps.length === 0) {
