@@ -19,3 +19,5 @@ A Travel plan booking web application.
 * Material UI
 * HTML
 * Css
+
+[Resume](https://drive.google.com/file/d/1l-BxPeVAvRoGX8ZJbENxtGiR-8YqpaGN/view?usp=sharing)
